@@ -1,0 +1,299 @@
+$enableShadow: true;
+$enableGrediant: true;
+
+@mixin mQ($arg...){
+    @if length($arg) == 2 {
+        @media screen and (min-width: nth($arg, 1)) and (max-width: nth($arg, 2)) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: nth($arg, 1)) {
+            @content;
+        }
+    }
+}
+
+// Import external fonts
+@font-face {
+    font-family: 'Gudea';
+    src: url('../assets/fonts/Gudea-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    src: url('../assets/fonts/UbuntuCondensed-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    src: url('../assets/fonts/YanoneKaffeesatz-Bold.ttf')
+}
+
+.first {
+    display: none;
+
+    &-img {
+        width: 270px;
+        @include mQ('1025px'){
+            width: 390px;
+        }
+    }
+}
+
+.main-side {
+    height: auto;
+    @include mQ('1025px') {
+        height: 90vh !important;
+    }
+}
+
+.party {
+    box-shadow: 3px 3px 5px transparentize(#000, 0.5) !important;
+    transition: all 2s;
+    position: static;
+
+    &-logo {
+        width: 70px;
+        box-shadow: 0px 0px 3px transparentize(#000, 0.5) !important;
+    }
+}
+
+#showNow {
+    height: 90vh !important;
+}
+
+.text-shadow {
+    color: #4BA0FD;
+    font-variant: small-caps;
+    font-family: 'Gudea', sans-serif;
+    cursor: default;
+
+    &-h1 {
+        font-size: 0vw;
+        line-height: 6vw;
+
+        span {
+            color: #e60000;
+        }
+    }
+
+    &-h3 {
+        font-size: 0vw;
+        color: #030d42;
+    }
+}
+
+.decorate {
+    font-family: 'Ubuntu Condensed'sans-serif;
+    font-style: italic;
+    font-size: 5vw;
+    @include mQ('1024px'){
+        font-size: 2vw;
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    box-shadow: 0px 1px 5px 0px transparentize(#000, 0.3);
+    background-color: #fff !important;
+    width: 100vw;
+    @include mQ('1025px'){
+        width: 75vw;
+    }
+
+    ul {
+        height: 100%;
+
+        a,
+        a:hover,
+        a:visited,
+        a:active {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        li {
+            font-family: 'Yanone Kaffeesatz', sans-serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 3px transparentize(#000, 0.5);
+            padding: 5px;
+            a:hover{
+                text-shadow: 3px 3px 5px transparentize(#000, 0.2);
+            }
+        }
+    }
+}
+
+body {
+    background-color: lighten(#007BFF, 44%);
+    @include mQ('1024px'){
+        margin-top: 60px;
+    }
+}
+
+.aboutSection {
+    background: linear-gradient(#9C97A5,#A29FAF, #928F9A);
+    position: fixed;
+    top: 0;
+    left: 0;
+    // height: 400px;
+    @include mQ('1025px'){
+        height: 100vh;
+    }
+}
+
+.dp {
+    overflow-x: hidden;
+}
+
+.mine-wi{
+    overflow-y: scroll;
+    width: 100vw !important;
+    @include mQ('1025px'){
+        width: 75vw !important;
+    }
+}
+
+.ViewImg {
+    display: none;
+    @include mQ('1025px'){
+        display: block;
+        width: auto;
+        height: 100vh;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+}
+
+.formWidth{
+    width: 90vw;
+    margin-top: 70px;
+    @include mQ('1024px'){
+        width: 50vw;
+        margin-top: 0;
+    }
+}
+
+.socials{
+    height: 340px;
+    width: 100px;
+    ul{
+        a{
+            color: unset;
+        }
+        height: 100%;
+        li{
+            &:nth-child(1){
+                .fab, .fa{
+                    &:hover{
+                        color: #3b5998;
+                    }
+                }
+            }
+            &:nth-child(2){
+                .fab, .fa{
+                    &:hover{
+                        color: #38a1f3;
+                    }
+                }
+            }
+            &:nth-child(3){
+                .fab, .fa{
+                    &:hover{
+                        color: #fb3958;
+                    }
+                }
+            }
+            &:nth-child(4){
+                .fab, .fa{
+                    &:hover{
+                        color: #c4302b;
+                    }
+                }
+            }
+        }
+        .fab, .fa{
+            font-size: 28px;
+            padding-left: 1px;
+            transition: all 0.5s;
+            &:hover{
+                font-size: 40px;
+                padding-left: 5px;
+                transition: all 0.5s;
+                text-shadow: 0px 0px 4px transparentize(#000, 0.5);
+            }
+        }
+    }
+}
+
+#showNow {
+    height: 0%;
+    overflow: hidden;
+}
+
+
+.hide-text {
+    transition: all 2s;
+    @include mQ('1024px'){
+        height: 100% !important;
+    }
+
+    .text-shadow {
+        &-h1 {
+            font-size: 12vw;
+            line-height: 12vw;
+            transition-delay: text-shadow 2s;
+            transition: font-size 1s, text-shadow 3.5s;
+            text-shadow: 3px 3px 5px transparentize(#000, 0.5);
+            @include mQ('1025px'){
+                font-size: 6vw;
+                line-height: 6vw;
+                transition-delay: text-shadow 2s;    
+            }
+
+            span {
+                color: #e60000;
+            }
+        }
+
+        &-h3 {
+            transition: font-size 1s, text-shadow 3.5s;
+            transition-delay: text-shadow 2s;
+            font-size: 9vw;
+            color: #030d42;
+            text-shadow: 3px 3px 5px transparentize(#535353, 0.5) !important;
+            @include mQ('1025px') {
+                font-size: 4vw;
+            }
+        }
+    }
+}
+
+.overflow{
+    overflow: scroll;
+    @include mQ('1025px'){
+        overflow: hidden;
+    }
+}
+
+.mDown {
+    // position: absolute;
+    bottom: 410px;
+    animation: all 2s;
+}
+
+.shadowed{
+    box-shadow: 3px 3px 5px transparentize(#000, 0.5) !important;
+    transition-delay: 3s;
+    transition: all 5s;
+}
+
+.volunteer{
+    box-shadow: 0px 0px 1px #000 !important;
+    // background: #000;
+    width: 100%;
+}
